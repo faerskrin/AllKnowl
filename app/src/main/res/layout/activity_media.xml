@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        />
+
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_below="@id/recycler" android:background="#f5f5f5">
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Max Time"
+            android:id="@+id/textView_maxTime"
+            android:gravity="center"/>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView_currentPosion"
+            android:layout_marginTop="20dp"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_marginLeft="50dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_skip_previous_black_24dp"
+                android:id="@+id/button_backsong"
+                android:background="@drawable/shape"/>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_marginLeft="20dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_play_arrow_black_24dp"
+                android:id="@+id/button_start"
+                android:background="@drawable/shape"/>
+
+        <ImageButton
+            android:layout_marginLeft="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_skip_next_black_24dp"
+            android:id="@+id/button_nextsong"
+            android:background="@drawable/shape"/>
+
+        <ImageButton
+            android:layout_marginLeft="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_file_download_black_24dp"
+            android:id="@+id/button_download"
+            android:background="@drawable/shape"
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="Pause"
+        android:layout_marginTop="555dp"
+        android:visibility="invisible"
+        android:layout_marginLeft="130dp"
+        android:id="@+id/button_pause"
+        android:src="@drawable/ic_pause_circle_outline_black_24dp"
+        android:background="@drawable/shape"/>
+
+</RelativeLayout>
