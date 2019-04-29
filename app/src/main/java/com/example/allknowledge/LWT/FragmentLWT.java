@@ -15,9 +15,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
+import com.example.allknowledge.App;
 import com.example.allknowledge.R;
 import com.example.allknowledge.model.ListWithText;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+
+import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,8 +36,11 @@ public class FragmentLWT extends Fragment implements CompoundButton.OnCheckedCha
     ImageView imageView;
     @BindView(R.id.fragment_switch)
     SwitchMaterial switchMaterial;
+    private int pos;
+    private List<ListWithText> lwt = new ArrayList<>();
 
-    public FragmentLWT(ListWithText lwt ) {
+    public FragmentLWT(ListWithText lwt, int position ) {
+        pos=position;
         listWithTexts = lwt;
     }
 
@@ -47,7 +53,7 @@ public class FragmentLWT extends Fragment implements CompoundButton.OnCheckedCha
         Glide.with(imageView)
                 .load(listWithTexts.getImage())
                 .into(imageView);
-
+        lwt = App.dm.getLwt();
 
         if (listWithTexts.getSituation()) {
             switchMaterial.setChecked(true);
@@ -60,12 +66,13 @@ public class FragmentLWT extends Fragment implements CompoundButton.OnCheckedCha
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
             if (b)
             {
-
+                lwt.get(pos).setSituation(true);
+                App.dm.setLwt(lwt);
             }
             else
             {
-
-
+                lwt.get(pos).setSituation(false);
+                App.dm.setLwt(lwt);
             }
     }
 

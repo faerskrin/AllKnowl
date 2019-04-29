@@ -4,7 +4,8 @@ data class ListWithText
 (
         val image: Int,
         val name :String,
-        val situation : Boolean,
-        val position: String
+        var situation : Boolean,
+        val position1: Double,
+        val position2: Double
 )
 

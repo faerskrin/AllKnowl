@@ -82,7 +82,7 @@ public class SortListActivity extends AppCompatActivity implements LWTAdapter.Se
 
     @Override
     public void onClicked(ListWithText lwt, int pos) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.frgmCount,new FragmentLWT(lwt)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frgmCount,new FragmentLWT(lwt,pos)).commit();
 
     }
 }

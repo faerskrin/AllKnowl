@@ -22,6 +22,10 @@ public class Datamanager {
         setList();
     }
 
+    public void setLwt(List<ListWithText> lwt) {
+        this.lwt = lwt;
+    }
+
     public List<ListWithText> getLwt() {
         return lwt;
     }
@@ -48,9 +52,9 @@ public class Datamanager {
 
     private void  setList ()
     {
-        lwt.add(new ListWithText(R.drawable.tel,"Разработка мобильных приложений",false, "55.77144241333008, 49.23350524902344"));
-        lwt.add(new ListWithText(R.drawable.robot,"Мобильная робототехника",false,"55.78217228729694,49.18973922729492"));
-        lwt.add(new ListWithText(R.drawable.pk,"It решения для бизнеса",true,"55.78342718541095,49.132919311523445"));
+        lwt.add(new ListWithText(R.drawable.tel,"Разработка мобильных приложений",false, 55.77144241333008, 49.23350524902344));
+        lwt.add(new ListWithText(R.drawable.robot,"Мобильная робототехника",false,55.78217228729694, 49.18973922729492));
+        lwt.add(new ListWithText(R.drawable.pk,"It решения для бизнеса",true,55.78342718541095,49.132919311523445));
      }
 
     private void setUrl() {

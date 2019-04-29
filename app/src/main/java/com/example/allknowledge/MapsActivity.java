@@ -3,16 +3,21 @@ package com.example.allknowledge;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.example.allknowledge.model.ListWithText;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+import java.util.List;
+
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap;
 
@@ -39,17 +44,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        List<ListWithText> lwt = App.dm.getLwt();
+
+        for (int i = 0; i<lwt.size();i++)
+        {
+            if (lwt.get(i).getSituation())
+            {
+                LatLng sydney = new LatLng(lwt.get(i).getPosition1(),lwt.get(i).getPosition2());
+                mMap.addMarker(new MarkerOptions().position(sydney).title(lwt.get(i).getName()).snippet("08:00-22:00").icon(BitmapDescriptorFactory.fromResource(R.drawable.jajuk)));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            }
+        }
 
 
-
-
-
+        mMap.setOnInfoWindowClickListener(this);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(55.77144241333008, 49.23350524902344);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Разработка мобильных приложений").snippet("08:00-22:00").icon(BitmapDescriptorFactory.fromResource(R.drawable.jajuk)));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
+    }
+
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(getBaseContext(),marker.getTitle(),Toast.LENGTH_SHORT).show();
     }
 }
