@@ -42,6 +42,8 @@ public class AdapterRecipe extends RecyclerView.Adapter<AdapterRecipe.GroupViewH
     @Override
     public GroupViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+
+
         if (viewType==1) {
              view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_onefrag, parent, false);
         }
